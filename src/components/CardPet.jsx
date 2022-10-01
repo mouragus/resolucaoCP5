@@ -41,28 +41,22 @@ function CardPet(props) {
                 <img src={props.pet.imagem} alt=""/>
             </div>
             <p>
-                <span>Nome:</span>
-                {props.pet.nome}
+                <span>Nome:</span> {props.pet.nome}
             </p>
             <p>
-                <span>Raça:</span>
-                {props.pet.raca}
+                <span>Raça:</span> {props.pet.raca}
             </p>
             <p>
-                <span>Porte:</span>
-                {props.pet.porte}
+                <span>Porte:</span> {props.pet.porte}
             </p>
             <p>
-                <span>Tutor:</span>
-                {props.pet.tutor}
+                <span>Tutor:</span> {props.pet.tutor}
             </p>
             <p>
-                <span>Contato Tutor:</span>
-                {props.pet.contatoTutor}
+                <span>Contato Tutor:</span> {props.pet.contatoTutor}
             </p>
             <p>
-                <span>Observação:</span>
-                {props.pet.observacao}
+                <span>Observação:</span> {props.pet.observacao}
             </p>
         </Container>
     )
