@@ -65,5 +65,5 @@ export const Form = styled.form`
 export const DivPets = styled.div`
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
 `
