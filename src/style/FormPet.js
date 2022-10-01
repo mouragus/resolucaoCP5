@@ -1,19 +1,6 @@
 import styled from "styled-components";
 
-export const DivPet = styled.div`
-    width: 100%;
-    min-height: 85vh;
-    padding: 20px 0;
-    display: flex;
-    flex-direction:column;
-    font-family: 'Century Gothic', 'Arial';
-
-    h1{
-        margin-left: 50px;
-    }
-`;
-
-export const Form = styled.form`
+export const StyledFormPet = styled.form`
     padding: 50px;
     display: flex;
     flex-wrap: wrap;
@@ -61,9 +48,3 @@ export const Form = styled.form`
         color: #fff;
     }
 ` 
-
-export const DivPets = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-`

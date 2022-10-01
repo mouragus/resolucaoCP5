@@ -1,9 +1,9 @@
 import React from 'react';
-import { Container } from '../style/CardPet';
+import { StyledContainer } from '../style/CardPet';
 
 function CardPet(props) {
     return (
-        <Container>
+        <StyledContainer>
             <div>
                 <img src={props.pet.imagem} alt=""/>
             </div>
@@ -25,7 +25,7 @@ function CardPet(props) {
             <p>
                 <span>Observação:</span> {props.pet.observacao}
             </p>
-        </Container>
+        </StyledContainer>
     )
 }
 
