@@ -2,7 +2,23 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
+    background-color: #ddd;
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    margin: 10px;
 
+    & > p{
+        font-size: 15px;
+        margin: 5px;
+    }
+
+    & > p > span{
+        font-weight: 900;
+    }
 `
 
 function CardPet(props) {
@@ -12,28 +28,28 @@ function CardPet(props) {
                 imagem
             </div>
             <p>
-                <h6>Nome:</h6>
-                {props.nome}
+                <span>Nome:</span>
+                {props.pet.nome}
             </p>
             <p>
-                <h6>Raça:</h6>
-                {props.nome}
+                <span>Raça:</span>
+                {props.pet.raca}
             </p>
             <p>
-                <h6>Porte:</h6>
-                {props.nome}
+                <span>Porte:</span>
+                {props.pet.porte}
             </p>
             <p>
-                <h6>Nome:</h6>
-                {props.nome}
+                <span>Tutor:</span>
+                {props.pet.tutor}
             </p>
             <p>
-                <h6>Nome:</h6>
-                {props.nome}
+                <span>Contato Tutor:</span>
+                {props.pet.contatoTutor}
             </p>
             <p>
-                <h6>Nome:</h6>
-                {props.nome}
+                <span>Observação:</span>
+                {props.pet.observacao}
             </p>
         </Container>
     )

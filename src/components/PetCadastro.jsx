@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react"
-import { DivPet, Form } from '../style/styled'
+import { DivPet, DivPets, Form } from '../style/styled'
+import CardPet from "./CardPet";
 
 
 function PetCadastro() {
@@ -17,7 +18,7 @@ function PetCadastro() {
             id: Date.now(),
             nome: form.querySelector('input[name=nome]').value,
             raca: form.querySelector('input[name=raca]').value,
-            porte: form.querySelector('input[name=porte]').value,
+            porte: form.querySelector('select[name=porte]').value,
             tutor: form.querySelector('input[name=tutor]').value,
             contatoTutor: form.querySelector('input[name=contatoTutor]').value,
             observacao: form.querySelector('textarea[name=observacao]').value,
@@ -65,17 +66,17 @@ function PetCadastro() {
                     <textarea name='observacao' cols="35" rows="15"></textarea>
                 </div>
                 <div>
-                    <button type='submit'>Adicionar um Pet</button>
+                    <button type='submit'>Adicionar Pet</button>
                 </div>
             </Form>
 
-            {
-                pets.map(pet => (
-                    <div key={pet.id}>
-                        Nome: {pet.nome}
-                    </div>
-                ))
-            }
+            <DivPets>
+                {
+                    pets.map(pet => (
+                        <CardPet pet={pet} />
+                    ))
+                }
+            </DivPets>
 
         </DivPet>
     )
