@@ -1,131 +1,83 @@
 import React from "react";
-import {useState} from "react"
-import {DivPet} from '../style/styled'
-import FormPet from "./FormPet";
+import { useState } from "react"
+import { DivPet, Form } from '../style/styled'
 
 
 function PetCadastro() {
 
-    const[nmPet, setNmPet] = useState([{ 
-        Nome : "",
-        Raça : "",
-        Porte : "",
-        Tutor : "",
-        ContatoTutor : "",
-        ImagemPet : "",
-        Observacoes : ""
-    }])
+    const [pets, setPets] = useState([])
 
 
-    const addPet = (e)=>{
-        e.preventDefault()
-    
-        setNmPet([...nmPet])
-    }
-
-    const capturaDados =(e) =>{
-        
+    function addPet(e) {
         e.preventDefault()
 
-        const {name, value} = e.target
-        
-        if(name === "nome"){
-            setNmPet({ 
-                'nome' : value,
-                'raca' : nmPet.Raca,
-                'porte' : nmPet.Porte,
-                'tutor' : nmPet.Tutor,
-                'conato tutor' : nmPet.ContatoTutor,
-                'imagem pet' : nmPet.ImagemPet,
-                'observacao' : nmPet.Observacoes
-            })
+        let form = e.target
+
+        let novoPet = {
+            id: Date.now(),
+            nome: form.querySelector('input[name=nome]').value,
+            raca: form.querySelector('input[name=raca]').value,
+            porte: form.querySelector('input[name=porte]').value,
+            tutor: form.querySelector('input[name=tutor]').value,
+            contatoTutor: form.querySelector('input[name=contatoTutor]').value,
+            observacao: form.querySelector('textarea[name=observacao]').value,
         }
-        if(name === "raca"){
-            setNmPet({ 
-                'nome' : nmPet.Nome,
-                'raca' : value,
-                'porte' : nmPet.Porte,
-                'tutor' : nmPet.Tutor,
-                'contato tutor' : nmPet.ContatoTutor,
-                'imagem pet' : nmPet.ImagemPet,
-                'observacao' : nmPet.Observacoes
-            })
-        }
-        if(name === "porte"){
-            setNmPet({ 
-                'nome' : nmPet.Nome,
-                'raca' : nmPet.Raca,
-                'porte' : value,
-                'tutor' : nmPet.Tutor,
-                'conato tutor' : nmPet.ContatoTutor,
-                'imagem pet' : nmPet.ImagemPet,
-                'observacao' : nmPet.Observacoes
-            })
-        }
-        if(name === "tutor"){
-            setNmPet({ 
-                'nome' : nmPet.Nome,
-                'raca' : nmPet.Raca,
-                'porte' : nmPet.Porte,
-                'tutor' : value,
-                'contato tutor' : nmPet.ContatoTutor,
-                'imagem pet' : nmPet.ImagemPet,
-                'observacao' : nmPet.Observacoes
-            })
-        }
-        if(name === "contato tutor"){
-            setNmPet({ 
-                'nome' : nmPet.Nome,
-                'raca' : nmPet.Raca,
-                'porte' : nmPet.Porte,
-                'tutor' : nmPet.Tutor,
-                'contato tutor' : value,
-                'imagem pet' : nmPet.ImagemPet,
-                'observacao' : nmPet.Observacoes
-            })
-        }
-        if(name === "imagem pet"){
-            setNmPet({ 
-                'nome' : nmPet.Nome,
-                'raca' : nmPet.Raca,
-                'porte' : nmPet.Porte,
-                'tutor' : nmPet.Tutor,
-                'contato tutor' : nmPet.ContatoTutor,
-                'imagem pet' : value,
-                'observacao' : nmPet.Observacoes
-            })
-        }
-        if(name === "observacao"){
-            setNmPet({ 
-                'nome' : nmPet.Nome,
-                'raca' : nmPet.Raca,
-                'porte' : nmPet.Porte,
-                'tutor' : nmPet.Tutor,
-                'contato tutor' : nmPet.ContatoTutor,
-                'imagem pet' : nmPet.ImagemPet,
-                'observacao' :value
-            })
-        }
+
+        setPets([...pets, novoPet])
+
+        form.reset()
     }
-   
-    return(
+
+    return (
         <DivPet>
-    
-            <FormPet
-             capt={capturaDados}
-            />
-    
-            {/* {<button onClick={addPet}>Adicionar um Pet</button>} */}
-    
-            {nmPet.map((tar, i)=>(
-                <PetCadastro
-                    key={i}
-                    pet= {tar}
-                />
-            ))}
-            
-        </DivPet>
-      )
-}
+            <h1>Cadastro Do Pet</h1>
+            <Form action="" onSubmit={addPet}>
+                <div>
+                    <label>Nome</label>
+                    <input type="text" name='nome' required />
+                </div>
+                <div>
+                    <label>Raça</label>
+                    <input type="text" name='raca' required />
+                </div>
+                <div>
+                    <label>Porte</label>
+                    <select name="porte">
+                        <option value="Pequeno">Pequeno</option>
+                        <option value="Médio">Médio</option>
+                        <option value="Grande">Grande</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Tutor</label>
+                    <input type="text" name='tutor' required />
+                </div>
+                <div>
+                    <label>Contato Tutor</label>
+                    <input type="tel" name='contatoTutor' required />
+                </div>
+                {/* <div>
+                    <label>Imagem Pet</label>
+                    <input type="url" name='imagemPet' />
+                </div> */}
+                <div>
+                    <label>Observações</label>
+                    <textarea name='observacao' cols="35" rows="15"></textarea>
+                </div>
+                <div>
+                    <button type='submit'>Adicionar um Pet</button>
+                </div>
+            </Form>
 
+            {
+                pets.map(pet => (
+                    <div key={pet.id}>
+                        Nome: {pet.nome}
+                    </div>
+                ))
+            }
+
+        </DivPet>
+    )
+}
 export default PetCadastro;
