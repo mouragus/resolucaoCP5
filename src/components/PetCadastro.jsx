@@ -7,6 +7,7 @@ import CardPet from "./CardPet";
 function PetCadastro() {
 
     const [pets, setPets] = useState([])
+    const [foto, setFoto] = useState('')
 
 
     function addPet(e) {
@@ -21,12 +22,23 @@ function PetCadastro() {
             porte: form.querySelector('select[name=porte]').value,
             tutor: form.querySelector('input[name=tutor]').value,
             contatoTutor: form.querySelector('input[name=contatoTutor]').value,
+            imagem: foto,
             observacao: form.querySelector('textarea[name=observacao]').value,
         }
 
         setPets([...pets, novoPet])
 
         form.reset()
+    }
+
+    function converteFoto(e){
+        var file = e.target.files[0];
+        var reader = new FileReader();
+        reader.readAsDataURL(file);
+
+        reader.onloadend = function (e) {
+            setFoto(reader.result)
+        }.bind(this)
     }
 
     return (
@@ -57,10 +69,10 @@ function PetCadastro() {
                     <label>Contato Tutor</label>
                     <input type="tel" name='contatoTutor' required />
                 </div>
-                {/* <div>
+                <div>
                     <label>Imagem Pet</label>
-                    <input type="url" name='imagemPet' />
-                </div> */}
+                    <input type="file" name='imagem' accept="image/png, image/gif, image/jpeg" required onChange={converteFoto}/>
+                </div>
                 <div>
                     <label>Observações</label>
                     <textarea name='observacao' cols="35" rows="15"></textarea>
@@ -73,7 +85,7 @@ function PetCadastro() {
             <DivPets>
                 {
                     pets.map(pet => (
-                        <CardPet pet={pet} />
+                        <CardPet pet={pet} key={pet.id}/>
                     ))
                 }
             </DivPets>

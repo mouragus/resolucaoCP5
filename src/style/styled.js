@@ -27,7 +27,7 @@ export const Form = styled.form`
         font-weight: 700;
     }
     
-    & > div:nth-child(6){
+    & > div:nth-child(7){
         min-width: 100%;
     }
     

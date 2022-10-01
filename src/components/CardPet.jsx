@@ -6,10 +6,23 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     width: 30%;
+    min-width: 250px;
     padding: 20px;
     border-radius: 10px;
     border: 1px solid #ccc;
     margin: 10px;
+
+    & > div{
+        text-align: center;
+    }
+
+    & > div > img{
+        height: 150px;
+        width: 150px;
+        object-fit: cover;
+        border-radius: 300px;
+        border: 4px solid #ED145B;
+    }
 
     & > p{
         font-size: 15px;
@@ -25,7 +38,7 @@ function CardPet(props) {
     return (
         <Container>
             <div>
-                imagem
+                <img src={props.pet.imagem} alt=""/>
             </div>
             <p>
                 <span>Nome:</span>
