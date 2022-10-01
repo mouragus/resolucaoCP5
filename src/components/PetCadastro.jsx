@@ -6,7 +6,7 @@ import FormPet from "./FormPet";
 
 function PetCadastro() {
 
-    const[nmPet, setNmPet] = useState({ 
+    const[nmPet, setNmPet] = useState([{ 
         Nome : "",
         Raça : "",
         Porte : "",
@@ -14,7 +14,7 @@ function PetCadastro() {
         ContatoTutor : "",
         ImagemPet : "",
         Observacoes : ""
-    })
+    }])
 
 
     const addPet = (e)=>{
@@ -29,7 +29,7 @@ function PetCadastro() {
 
         const {name, value} = e.target
         
-        if(name == "nome"){
+        if(name === "nome"){
             setNmPet({ 
                 'nome' : value,
                 'raca' : nmPet.Raca,
@@ -40,7 +40,7 @@ function PetCadastro() {
                 'observacao' : nmPet.Observacoes
             })
         }
-        if(name == "raca"){
+        if(name === "raca"){
             setNmPet({ 
                 'nome' : nmPet.Nome,
                 'raca' : value,
@@ -51,7 +51,7 @@ function PetCadastro() {
                 'observacao' : nmPet.Observacoes
             })
         }
-        if(name == "porte"){
+        if(name === "porte"){
             setNmPet({ 
                 'nome' : nmPet.Nome,
                 'raca' : nmPet.Raca,
@@ -62,7 +62,7 @@ function PetCadastro() {
                 'observacao' : nmPet.Observacoes
             })
         }
-        if(name == "tutor"){
+        if(name === "tutor"){
             setNmPet({ 
                 'nome' : nmPet.Nome,
                 'raca' : nmPet.Raca,
@@ -73,7 +73,7 @@ function PetCadastro() {
                 'observacao' : nmPet.Observacoes
             })
         }
-        if(name == "contato tutor"){
+        if(name === "contato tutor"){
             setNmPet({ 
                 'nome' : nmPet.Nome,
                 'raca' : nmPet.Raca,
@@ -84,7 +84,7 @@ function PetCadastro() {
                 'observacao' : nmPet.Observacoes
             })
         }
-        if(name == "imagem pet"){
+        if(name === "imagem pet"){
             setNmPet({ 
                 'nome' : nmPet.Nome,
                 'raca' : nmPet.Raca,
@@ -95,7 +95,7 @@ function PetCadastro() {
                 'observacao' : nmPet.Observacoes
             })
         }
-        if(name == "obsevacao"){
+        if(name === "observacao"){
             setNmPet({ 
                 'nome' : nmPet.Nome,
                 'raca' : nmPet.Raca,
@@ -115,7 +115,7 @@ function PetCadastro() {
              capt={capturaDados}
             />
     
-            {<button onClick={addPet}>Adicionar um Pet</button>}
+            {/* {<button onClick={addPet}>Adicionar um Pet</button>} */}
     
             {nmPet.map((tar, i)=>(
                 <PetCadastro
